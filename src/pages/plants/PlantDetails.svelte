@@ -13,11 +13,9 @@
 
     let plant = {
         _id: "",
-        title: "",
-        released: "",
-        label: "",
-        genres: [],
-        families: [],
+        common_name: "",
+        scientific_name: "",
+        families: []
     };
 
     let families = [];

@@ -2,8 +2,7 @@
     import axios from "axios";
 
     let family = {
-        name: "",
-        origin: "",
+        family_name: ""
     };
 
     function addFamily() {
@@ -19,16 +18,12 @@
 </script>
 
 <div class="mb-5">
-    <h1 class="mt-3">Add an family</h1>
+    <h1 class="mt-3">Add a family</h1>
 
     <form>
         <div class="mb-3">
-            <label for="" class="form-label">Name</label>
-            <input class="form-control" type="text" bind:value={family.name} />
-        </div>
-        <div class="mb-3">
-            <label for="" class="form-label">Origin</label>
-            <input class="form-control" type="text" bind:value={family.origin} />
+            <label for="" class="form-label">Family Name</label>
+            <input class="form-control" type="text" bind:value={family.family_name} />
         </div>
         <button on:click={addFamily} type="button" class="btn btn-primary">
             Add Family
