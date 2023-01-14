@@ -1,15 +1,15 @@
 <script>
     import axios from "axios";
 
-    let artist = {
+    let family = {
         name: "",
         origin: "",
     };
 
-    function addArtist() {
-        axios.post("http://localhost:3001/api/artists", artist)
+    function addFamily() {
+        axios.post("http://localhost:3001/api/families", family)
             .then((response) => {
-                alert("Artist added");
+                alert("Family added");
             })
             .catch((error) => {
                 console.log(error);
@@ -19,19 +19,19 @@
 </script>
 
 <div class="mb-5">
-    <h1 class="mt-3">Add an artist</h1>
+    <h1 class="mt-3">Add an family</h1>
 
     <form>
         <div class="mb-3">
             <label for="" class="form-label">Name</label>
-            <input class="form-control" type="text" bind:value={artist.name} />
+            <input class="form-control" type="text" bind:value={family.name} />
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Origin</label>
-            <input class="form-control" type="text" bind:value={artist.origin} />
+            <input class="form-control" type="text" bind:value={family.origin} />
         </div>
-        <button on:click={addArtist} type="button" class="btn btn-primary">
-            Add Artist
+        <button on:click={addFamily} type="button" class="btn btn-primary">
+            Add Family
         </button>
     </form>
 </div>

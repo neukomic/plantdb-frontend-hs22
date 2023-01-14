@@ -2,74 +2,68 @@
     import axios from "axios";
 
     export let params = {};
-    let album_id;
-    let artist_id;
+    let plant_id;
+    let family_id;
 
     $: {
-        album_id = params.id;
-        getAlbum();
-        getArtists();
+        plant_id = params.id;
+        getPlant();
+        getFamilies();
     }
 
-    let album = {
+    let plant = {
         _id: "",
         title: "",
         released: "",
         label: "",
         genres: [],
-        artists: [],
+        families: [],
     };
 
-    let artists = [];
+    let families = [];
 
-    function getAlbum() {
-        axios.get("http://localhost:3001/api/albums/" + album_id)
+    function getPlant() {
+        axios.get("http://localhost:3001/api/plants/" + plant_id)
             .then((response) => {
-                album = response.data;
+                plant = response.data;
             });
     }
 
-    function getArtists() {
-        axios.get("http://localhost:3001/api/artists")
+    function getFamilies() {
+        axios.get("http://localhost:3001/api/families")
             .then((response) => {
-                artists = response.data;
+                families = response.data;
             });
     }
 
-    function addArtistToAlbum() {
-        album.artists.push(artist_id);
-        axios.put("http://localhost:3001/api/albums/" + album_id, album)
+    function addFamilyToPlant() {
+        plant.families.push(family_id);
+        axios.put("http://localhost:3001/api/plants/" + plant_id, plant)
             .then((response) => {
-                getAlbum();
+                getPlant();
             });
     }
 </script>
 
 <div class="mb-5">
-    <h1 class="mt-3">Album (ID: {album_id})</h1>
-    <p>Title: {album.title}</p>
-    <p>Release Year: {album.released}</p>
-    <p>Genres:</p>
+    <h1 class="mt-3">Plant (ID: {plant_id})</h1>
+    <p>Common Name: {plant.common_name}</p>
+    <p>Scientific Name: {plant.scientific_name}</p>
+    <p>Families:</p>
     <ul>
-        {#each album.genres as genre}
-            <li>{genre}</li>
-        {/each}
-    </ul>
-    <p>Artists:</p>
-    <ul>
-        {#each album.artists as artist}
+        {#each plant.families as family}
             <li>
-                <a href={"#/artists/" + artist}>{artist}</a>
+                <a href={"#/families/" + family}>{family}</a>
             </li>
         {/each}
     </ul>
 
-    <h2>Update Artists</h2>
-    <label for="artist">Add Artist to album</label>
-    <select class="form-select" bind:value={artist_id} id="artist">
-        {#each artists as artist}
-            <option value={artist._id}>{artist.name}</option>
+    <h2>Update Families</h2>
+    <label for="family">Add Family to plant</label>
+    <select class="form-select" bind:value={family_id} id="family">
+        {#each families as family}
+            <option value={family._id}>{family.family_name}</option>
         {/each}
     </select>
-    <button class="btn btn-primary mt-2" on:click={addArtistToAlbum}>Update</button>
+    <button class="btn btn-primary mt-2" on:click={addFamilyToPlant}>Update</button>
 </div>

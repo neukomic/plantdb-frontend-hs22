@@ -17,9 +17,8 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Title</th>
-                <th>Released</th>
-                <th>Label</th>
+                <th>Common Name</th>
+                <th>Scientific Name</th>
             </tr>
         </thead>
         <tbody>
@@ -31,13 +30,10 @@
                         </a>
                     </td>
                     <td>
-                        {plant.title}
+                        {plant.common_name}
                     </td>
                     <td>
-                        {plant.released}
-                    </td>
-                    <td>
-                        {plant.label}
+                        {plant.scientific_name}
                     </td>
                 </tr>
             {/each}
