@@ -2,7 +2,13 @@
     import axios from "axios";
 
     let user = {
-        user_name: ""
+        first_name: "",
+        last_name: "",
+        phone: "",
+        email: "",
+        postalZip: "",
+        region: "",
+        country: ""
     };
 
     function addUser() {
@@ -22,8 +28,32 @@
 
     <form>
         <div class="mb-3">
-            <label for="" class="form-label">User Name</label>
-            <input class="form-control" type="text" bind:value={user.user_name} />
+            <label for="" class="form-label">First Name</label>
+            <input class="form-control" type="text" bind:value={user.first_name} />
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Last Name</label>
+            <input class="form-control" type="text" bind:value={user.last_name} />
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Phone</label>
+            <input class="form-control" type="text" bind:value={user.phone} />
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Email</label>
+            <input class="form-control" type="text" bind:value={user.email} />
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Zip</label>
+            <input class="form-control" type="text" bind:value={user.postalZip} />
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Region</label>
+            <input class="form-control" type="text" bind:value={user.region} />
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Country</label>
+            <input class="form-control" type="text" bind:value={user.country} />
         </div>
         <button on:click={addUser} type="button" class="btn btn-primary">
             Add User

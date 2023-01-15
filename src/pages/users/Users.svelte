@@ -6,19 +6,59 @@
     function getUsers() {
         axios.get("http://localhost:3001/api/users").then((response) => {
             users = response.data;
+            sortByName();
         });
     }
     getUsers();
+
+    function sortByName() {
+        users.sort((a, b) => {
+            if (a.last_name < b.last_name) {
+                return -1;
+            }
+            if (a.last_name > b.last_name) {
+                return 1;
+            }
+            if (a.first_name < b.first_name) {
+                return -1;
+            }
+            if (a.first_name > b.first_name) {
+                return 1;
+            }
+            return 0;
+        });
+        setUsers([...users]);
+    }
+
+    function sortByCountry() {
+        users.sort((a, b) => {
+            if (a.country < b.country) {
+                return -1;
+            }
+            if (a.country > b.country) {
+                return 1;
+            }
+            return 0;
+        });
+        setUsers([...users]);
+    }
+    function setUsers(newUsers) {
+        users = newUsers;
+    }
 </script>
 
 <div class="mb-5">
     <h1 class="mt-3">List of all Users</h1>
-    <a href="#/create-user">+ Add User</a>
+    <a href="#/create-user" class="btn btn-primary">+ Add User</a>
+    <button class="btn btn-primary" on:click={sortByCountry}>Sort by country</button>
+    <button class="btn btn-primary" on:click={sortByName}>Sort by name</button>
     <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>User Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Country</th>
             </tr>
         </thead>
         <tbody>
@@ -30,7 +70,13 @@
                         </a>
                     </td>
                     <td>
-                        {user.user_name}
+                        {user.first_name}
+                    </td>
+                    <td>
+                        {user.last_name}
+                    </td>
+                    <td>
+                        {user.country}
                     </td>
                 </tr>
             {/each}

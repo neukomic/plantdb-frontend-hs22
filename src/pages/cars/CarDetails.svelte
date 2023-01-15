@@ -13,8 +13,10 @@
 
     let car = {
         _id: "",
-        common_name: "",
-        scientific_name: "",
+        make: "",
+        model: "",
+        year: "",
+        automatic: "",
         users: []
     };
 
@@ -45,8 +47,10 @@
 
 <div class="mb-5">
     <h1 class="mt-3">Car (ID: {car_id})</h1>
-    <p>Common Name: {car.common_name}</p>
-    <p>Scientific Name: {car.scientific_name}</p>
+    <p>Make: {car.make}</p>
+    <p>Model: {car.model}</p>
+    <p>Year: {car.year}</p>
+    <p>Automatic: {car.automatic}</p>
     <p>Users:</p>
     <ul>
         {#each car.users as user}
@@ -60,7 +64,7 @@
     <label for="user">Add User to car</label>
     <select class="form-select" bind:value={user_id} id="user">
         {#each users as user}
-            <option value={user._id}>{user.user_name}</option>
+            <option value={user._id}>{user.first_name} {user.last_name}</option>
         {/each}
     </select>
     <button class="btn btn-primary mt-2" on:click={addUserToCar}>Update</button>
