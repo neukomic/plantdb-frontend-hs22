@@ -50,12 +50,13 @@
 <div class="mb-5">
     <h1 class="mt-3">List of all Users</h1>
     <a href="#/create-user" class="btn btn-primary">+ Add User</a>
-    <button class="btn btn-primary" on:click={sortByCountry}>Sort by country</button>
     <button class="btn btn-primary" on:click={sortByName}>Sort by name</button>
+    <button class="btn btn-primary" on:click={sortByCountry}
+        >Sort by country</button
+    >
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Country</th>
@@ -65,21 +66,26 @@
             {#each users as user}
                 <tr>
                     <td>
-                        <a href={"#/users/" + user._id}>
-                            {user._id}
-                        </a>
+                        <a href={"#/users/" + user._id}>{user.first_name}</a>
                     </td>
                     <td>
-                        {user.first_name}
+                        <a href={"#/users/" + user._id}>{user.last_name}</a>
                     </td>
                     <td>
-                        {user.last_name}
-                    </td>
-                    <td>
-                        {user.country}
+                        <a href={"#/users/" + user._id}>{user.country}</a>
                     </td>
                 </tr>
             {/each}
         </tbody>
     </table>
 </div>
+
+<style>
+    tr:hover {
+        opacity: 0.5;
+    }
+    td a {
+        display: block;
+        text-decoration: none;
+    }
+</style>

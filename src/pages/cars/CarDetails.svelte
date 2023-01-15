@@ -46,9 +46,7 @@
 </script>
 
 <div class="mb-5">
-    <h1 class="mt-3">Car (ID: {car_id})</h1>
-    <p>Make: {car.make}</p>
-    <p>Model: {car.model}</p>
+    <h1 class="mt-3">{car.make} {car.model}</h1>
     <p>Year: {car.year}</p>
     <p>Automatic: {car.automatic}</p>
     <p>Users:</p>
@@ -60,7 +58,7 @@
         {/each}
     </ul>
 
-    <h2>Update Users</h2>
+    <h4>Update Users</h4>
     <label for="user">Add User to car</label>
     <select class="form-select" bind:value={user_id} id="user">
         {#each users as user}
@@ -69,3 +67,9 @@
     </select>
     <button class="btn btn-primary mt-2" on:click={addUserToCar}>Update</button>
 </div>
+
+<style>
+    select {
+        width: auto;
+    }
+</style>

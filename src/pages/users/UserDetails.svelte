@@ -36,13 +36,11 @@
 </script>
 
 <div class="mb-5">
-    <h1 class="mt-3">User (ID: {id})</h1>
-    <p>First Name: {user.first_name}</p>
-    <p>Last Name: {user.last_name}</p>
-    <p>Phone: {user.phone}</p>
-    <p>Email: {user.email}</p>
-    <p>Zip: {user.postalZip}</p>
-    <p>Region: {user.region}</p>
-    <p>Country: {user.country}</p>
+        <h1 class="mt-3">{user.first_name} {user.last_name}</h1>
+        <p>Phone: {user.phone}</p>
+        <p>Email: {user.email}</p>
+        <p>Zip: {user.postalZip}</p>
+        <p>Region: {user.region}</p>
+        <p>Country: {user.country}</p>
+        <button class="btn btn-danger" on:click={deleteUser}>Delete User</button>
 </div>
-<button class="btn btn-danger" on:click={deleteUser}>Delete User</button>

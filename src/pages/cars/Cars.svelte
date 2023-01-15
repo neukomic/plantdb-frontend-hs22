@@ -74,7 +74,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Make</th>
                 <th>Model</th>
                 <th>Year</th>
@@ -85,20 +84,31 @@
                 <tr>
                     <td>
                         <a href={"#/cars/" + car._id}>
-                            {car._id}
+                            {car.make}
                         </a>
                     </td>
                     <td>
-                        {car.make}
+                        <a href={"#/cars/" + car._id}>
+                            {car.model}
+                        </a>
                     </td>
                     <td>
-                        {car.model}
-                    </td>
-                    <td>
-                        {car.year}
+                        <a href={"#/cars/" + car._id}>
+                            {car.year}
+                        </a>
                     </td>
                 </tr>
             {/each}
         </tbody>
     </table>
 </div>
+
+<style>
+    tr:hover {
+        opacity: 0.5;
+    }
+    td a {
+        display: block;
+        text-decoration: none;
+    }
+</style>
