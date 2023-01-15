@@ -6,7 +6,7 @@
 <!-- This part is always displayed -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#/">Plant DB</a>
+		<a class="navbar-brand" href="#/">Car DB</a>
 		<button
 			class="navbar-toggler"
 			type="button"
@@ -21,10 +21,10 @@
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="#/plants">Plants</a>
+					<a class="nav-link" href="#/cars">Cars</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#/families">Families</a>
+					<a class="nav-link" href="#/users">Users</a>
 				</li>
 			</ul>
 		</div>

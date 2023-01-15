@@ -1,18 +1,18 @@
 <script>
     import axios from "axios";
 
-    let plants = [];
+    let cars = [];
 
-    function getPlants() {
-        axios.get("http://localhost:3001/api/plants").then((response) => {
-            plants = response.data;
+    function getCars() {
+        axios.get("http://localhost:3001/api/cars").then((response) => {
+            cars = response.data;
         });
     }
-    getPlants();
+    getCars();
 </script>
 
 <div class="mb-5">
-    <h1 class="mt-3">List of all Plants</h1>
+    <h1 class="mt-3">List of all Cars</h1>
     <table class="table">
         <thead>
             <tr>
@@ -22,18 +22,18 @@
             </tr>
         </thead>
         <tbody>
-            {#each plants as plant}
+            {#each cars as car}
                 <tr>
                     <td>
-                        <a href={"#/plants/" + plant._id}>
-                            {plant._id}
+                        <a href={"#/cars/" + car._id}>
+                            {car._id}
                         </a>
                     </td>
                     <td>
-                        {plant.common_name}
+                        {car.common_name}
                     </td>
                     <td>
-                        {plant.scientific_name}
+                        {car.scientific_name}
                     </td>
                 </tr>
             {/each}
