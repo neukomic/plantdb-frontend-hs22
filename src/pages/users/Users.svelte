@@ -30,6 +30,25 @@
         setUsers([...users]);
     }
 
+    function sortByFirstName() {
+        users.sort((a, b) => {
+            if (a.first_name < b.first_name) {
+                return -1;
+            }
+            if (a.first_name > b.first_name) {
+                return 1;
+            }
+            if (a.last_name < b.last_name) {
+                return -1;
+            }
+            if (a.last_name > b.last_name) {
+                return 1;
+            }
+            return 0;
+        });
+        setUsers([...users]);
+    }
+
     function sortByCountry() {
         users.sort((a, b) => {
             if (a.country < b.country) {
@@ -51,15 +70,14 @@
     <h1 class="mt-3">List of all Users</h1>
     <a href="#/create-user" class="btn btn-primary">+ Add User</a>
     <button class="btn btn-primary" on:click={sortByName}>Sort by name</button>
-    <button class="btn btn-primary" on:click={sortByCountry}
-        >Sort by country</button
+    <button class="btn btn-primary" on:click={sortByCountry}>Sort by country</button
     >
     <table class="table">
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Country</th>
+                <th on:click={sortByFirstName}>First Name</th>
+                <th on:click={sortByName}>Last Name</th>
+                <th on:click={sortByCountry}>Country</th>
             </tr>
         </thead>
         <tbody>

@@ -4,26 +4,28 @@
     let car = {
         make: "",
         model: "",
-        year: "",
+        year: null,
         automatic: false,
+        users: [],
     };
 
     function addCar() {
         if (!car.make || !car.model || !car.year) {
             alert("Please fill in all the fields");
-
             return;
+        }
+
+        if (document.getElementById("inlineRadio1").checked) {
+            car.automatic = false;
+        } else if (document.getElementById("inlineRadio2").checked) {
+            car.automatic = true;
         }
 
         axios
             .post("http://localhost:3001/api/cars", car)
             .then((response) => {
-                car = {
-                    make: "",
-                    model: "",
-                    year: "",
-                    automatic: "",
-                };
+                car = {};
+                document.getElementById("inlineRadio1").checked = true;
                 alert("Car added successfully");
             })
             .catch((error) => {
@@ -47,15 +49,17 @@
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Year</label>
-            <input class="form-control" type="text" bind:value={car.year} />
+            <input class="form-control" type="number" bind:value={car.year} />
         </div>
+
         <div class="form-check form-check-inline">
             <input
                 class="form-check-input"
                 type="radio"
                 name="inlineRadioOptions"
                 id="inlineRadio1"
-                value="option1"
+                value="false"
+                checked="checked"
             />
             <label class="form-check-label" for="inlineRadio1">manual</label>
         </div>
@@ -65,7 +69,7 @@
                 type="radio"
                 name="inlineRadioOptions"
                 id="inlineRadio2"
-                value="option2"
+                value="true"
             />
             <label class="form-check-label" for="inlineRadio2">automatic</label>
         </div>
