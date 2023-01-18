@@ -37,6 +37,31 @@
         setCars([...cars]);
     }
 
+    function sortByModel() {
+        cars.sort((a, b) => {
+            if (a.model < b.model) {
+                return -1;
+            }
+            if (a.model > b.model) {
+                return 1;
+            }
+            if (a.make < b.make) {
+                return -1;
+            }
+            if (a.make > b.make) {
+                return 1;
+            }
+            if (a.year < b.year) {
+                return -1;
+            }
+            if (a.year > b.year) {
+                return 1;
+            }
+            return 0;
+        });
+        setCars([...cars]);
+    }
+
     function sortByYear() {
         cars.sort((a, b) => {
             if (a.year < b.year) {
@@ -74,9 +99,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Make</th>
-                <th>Model</th>
-                <th>Year</th>
+                <th on:click={sortByMake}>Make</th>
+                <th on:click={sortByModel}>Model</th>
+                <th on:click={sortByYear}>Year</th>
             </tr>
         </thead>
         <tbody>

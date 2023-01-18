@@ -17,28 +17,29 @@
         model: "",
         year: "",
         automatic: "",
-        users: []
+        users: [],
     };
 
     let users = [];
 
     function getCar() {
-        axios.get("http://localhost:3001/api/cars/" + car_id)
+        axios
+            .get("http://localhost:3001/api/cars/" + car_id)
             .then((response) => {
                 car = response.data;
             });
     }
 
     function getUsers() {
-        axios.get("http://localhost:3001/api/users")
-            .then((response) => {
-                users = response.data;
-            });
+        axios.get("http://localhost:3001/api/users").then((response) => {
+            users = response.data;
+        });
     }
 
     function addUserToCar() {
         car.users.push(user_id);
-        axios.put("http://localhost:3001/api/cars/" + car_id, car)
+        axios
+            .put("http://localhost:3001/api/cars/" + car_id, car)
             .then((response) => {
                 getCar();
             });
@@ -53,7 +54,7 @@
     <ul>
         {#each car.users as user}
             <li>
-                <a href={"#/users/" + user}>{user}</a>
+                <a href={"#/users/" + user}>Try this contact</a>
             </li>
         {/each}
     </ul>

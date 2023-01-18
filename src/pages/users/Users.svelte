@@ -2,13 +2,14 @@
     import axios from "axios";
 
     let users = [];
-
+    
     function getUsers() {
         axios.get("http://localhost:3001/api/users").then((response) => {
             users = response.data;
             sortByName();
         });
     }
+
     getUsers();
 
     function sortByName() {
@@ -61,6 +62,7 @@
         });
         setUsers([...users]);
     }
+
     function setUsers(newUsers) {
         users = newUsers;
     }

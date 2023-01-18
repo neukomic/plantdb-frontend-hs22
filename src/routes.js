@@ -1,5 +1,6 @@
 // Pages
 import Home from "./pages/Home.svelte";
+import AboutUs from "./pages/AboutUs.svelte";
 
 import Cars from "./pages/cars/Cars.svelte"
 import CarDetails from "./pages/cars/CarDetails.svelte"
@@ -13,6 +14,7 @@ export default {
     // Home
     '/': Home,
     '/home': Home,
+    '/about-us': AboutUs,
 
     // Cars
     '/cars': Cars,
