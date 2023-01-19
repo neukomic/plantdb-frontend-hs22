@@ -5,6 +5,16 @@
     let car_id;
     let user_id;
 
+    let userName = [];
+    let user;
+
+    function getUserName(id) {
+        axios.get("http://localhost:3001/api/users/" + id).then((response) => {
+            user = response.data;
+            userName[id] = user.first_name;
+        });
+    }
+
     $: {
         car_id = params.id;
         getCar();
@@ -54,7 +64,11 @@
     <ul>
         {#each car.users as user}
             <li>
-                <a href={"#/users/" + user}>Try this contact</a>
+                <a
+                    href={"#/users/" + user}
+                    __sveltets_2_with_any_event={getUserName(user)}
+                    >{userName[user]}</a
+                >
             </li>
         {/each}
     </ul>

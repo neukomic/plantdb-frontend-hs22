@@ -69,11 +69,7 @@
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Zip</label>
-            <input
-                class="form-control"
-                type="text"
-                bind:value={user.postalZip}
-            />
+            <input class="form-control" type="text" bind:value={user.postalZip} />
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Region</label>
