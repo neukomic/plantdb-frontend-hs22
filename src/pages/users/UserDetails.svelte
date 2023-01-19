@@ -23,16 +23,14 @@
     }
 
     function deleteUser() {
-        if (confirm("Are you sure you want to delete this user?")) {
-            axios
-                .delete("http://localhost:3001/api/users/" + id)
-                .then((response) => {
-                    console.log(response);
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        }
+        axios
+            .delete("http://localhost:3001/api/users/" + id)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     function editUser() {
@@ -57,7 +55,55 @@
     <p>Zip: {user.postalZip}</p>
     <p>Region: {user.region}</p>
     <p>Country: {user.country}</p>
-    <button class="btn btn-danger" on:click={deleteUser}>Delete User</button>
+    <!-- Button trigger modal -->
+    <button
+        type="button"
+        class="btn btn-danger"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+    >
+        Delete user
+    </button>
+
+    <!-- Modal -->
+    <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Confirmation
+                    </h5>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    />
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this user?
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">Close</button
+                    >
+                    <button
+                        type="button"
+                        class="btn btn-danger"
+                        on:click={deleteUser}>Delete user</button
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Accordion example from https://getbootstrap.com/docs/5.0/components/accordion/ -->
